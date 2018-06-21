@@ -101,33 +101,33 @@ export default {
       this.$v.form.$touch();
       if (!this.$v.form.$error) {
         if (this.$q.platform.is.cordova) {
-          this.$data.chargeModelLoadingVisible = true;
+          this.chargeModelLoadingVisible = true;
 
           // apple支付
-          inAppPurchase.getProducts([`charge_number_${this.$data.form.chargeValue}`]).then((products) => {
+          inAppPurchase.getProducts([`charge_number_${this.form.chargeValue}`]).then((products) => {
             inAppPurchase.buy(products[0].productId).then(() => {
-              this.$data.chargeModelLoadingVisible = false;
+              this.chargeModelLoadingVisible = false;
               // 关闭Modal
-              this.$data.chargeModelOpened = false;
+              this.chargeModelOpened = false;
 
               this.$q.notify({
                 type: 'positive',
                 message: '充值成功',
               });
             }).catch((err) => {
-              this.$data.chargeModelLoadingVisible = false;
+              this.chargeModelLoadingVisible = false;
               // eslint-disable-next-line
               console.log(err);
             });
           }).catch((err) => {
-            this.$data.chargeModelLoadingVisible = false;
+            this.chargeModelLoadingVisible = false;
             // eslint-disable-next-line
             console.log(err);
           });
         }
 
         // eslint-disable-next-line
-        console.log(`充值金额：${this.$data.form.chargeValue}`);
+        console.log(`充值金额：${this.form.chargeValue}`);
       } else {
         this.$q.notify({
           type: 'negative',
