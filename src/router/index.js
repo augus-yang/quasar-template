@@ -1,11 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import _ from 'lodash';
 import { Loading } from 'quasar';
 
-import Store from '../store';
+import store from '../store';
 import routes from './routes';
-import constant from '../constant';
+import ConstantUtil from '../utils/constant';
 
 Vue.use(VueRouter);
 
@@ -29,20 +28,15 @@ Router.beforeEach((to, from, next) => {
   Loading.show();
 
   // 判断跳转路由是否需要验证token
-  const unTokenIndex = _.findIndex(constant.UNTOKEN_ROUTE_PATHS, path => path === to.path);
+  const unTokenIndex = ConstantUtil.UNTOKEN_ROUTE_PATHS.findIndex(path => path === to.path);
   if (unTokenIndex > -1) {
     next();
     return;
   }
 
   // 判断用户是否登录
-  const tokenValue = Store.state.token;
+  const tokenValue = store.state.token;
   if (tokenValue) {
-    if (to.path === '/') {
-      next('/main');
-      return;
-    }
-
     next();
     return;
   }

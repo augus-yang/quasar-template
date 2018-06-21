@@ -139,7 +139,7 @@ export default {
 };
 </script>
 
-<style lang="stylus">
+<style scoped lang="stylus">
   .q-option-group
     div
       margin-bottom 10px

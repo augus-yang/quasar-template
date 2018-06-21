@@ -92,49 +92,40 @@ export default {
     forgetPwd() {
       this.$v.form.$touch();
       if (!this.$v.form.$error) {
-        this.$http.use({
-          url: this.$constant.api.USER_FORGET_PWD,
-          method: 'POST',
-          data: {
-            mobile: this.$data.form.mobile,
-            captcha: this.$data.form.captcha,
-            pwd: this.$data.form.pwd,
-          },
-          success: () => {
-            this.$q.notify({
-              type: 'positive',
-              message: '修改密码成功',
-            });
-            this.$router.replace('/main');
-          },
+        this.$api.forgetPwd({
+          mobile: this.form.mobile,
+          captcha: this.form.captcha,
+          pwd: this.form.pwd,
+        }, () => {
+          this.$q.notify({
+            type: 'positive',
+            message: '修改密码成功',
+          });
+
+          this.$router.replace('/main');
         });
       }
     },
     sendCaptcha() {
-      this.$data.sendCaptchaButtonText = 60;
-      this.$data.sendCaptchaDisabled = true;
+      this.sendCaptchaButtonText = 60;
+      this.sendCaptchaDisabled = true;
 
-      this.$http.use({
-        url: this.$constant.api.USER_CAPTCHA,
-        method: 'POST',
-        data: {
-          mobile: this.$data.form.mobile,
-        },
-        success: () => {
-          this.$q.notify({
-            type: 'positive',
-            message: '发送成功',
-          });
-        },
+      this.$api.captcha({
+        mobile: this.form.mobile,
+      }, () => {
+        this.$q.notify({
+          type: 'positive',
+          message: '发送成功',
+        });
       });
 
       const interval = setInterval(() => {
-        if (this.$data.sendCaptchaButtonText === 0) {
-          this.$data.sendCaptchaButtonText = '发送';
-          this.$data.sendCaptchaDisabled = false;
+        if (this.sendCaptchaButtonText === 0) {
+          this.sendCaptchaButtonText = '发送';
+          this.sendCaptchaDisabled = false;
           clearInterval(interval);
         } else {
-          this.$data.sendCaptchaButtonText -= 1;
+          this.sendCaptchaButtonText -= 1;
         }
       }, 1000);
     },
@@ -142,4 +133,4 @@ export default {
 };
 </script>
 
-<style lang="stylus"></style>
+<style scoped lang="stylus"></style>

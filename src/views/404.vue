@@ -16,13 +16,14 @@ export default {
         this.$router.back();
         return;
       }
+
       this.$router.replace('/home/dashboard');
     },
   },
 };
 </script>
 
-<style lang="stylus">
+<style scoped lang="stylus">
   .error-page
     background-color #2196F3
     h1

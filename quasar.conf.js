@@ -4,10 +4,9 @@ module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
     plugins: [
-      'constant',
+      'api',
       'cordova',
       'excel',
-      'http',
       'i18n',
       'socket',
       'validator',

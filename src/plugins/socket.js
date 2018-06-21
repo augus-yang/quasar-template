@@ -1,6 +1,6 @@
 import VueSocketio from 'vue-socket.io';
-import constant from '../constant';
+import ConstantUtil from '../utils/constant';
 
 export default ({ Vue }) => {
-  Vue.use(VueSocketio, constant.SERVER_PREFIX);
+  Vue.use(VueSocketio, ConstantUtil.SERVER_PREFIX);
 };

@@ -1,4 +1,4 @@
-import constant from '../constant';
+import ConstantUtil from '../utils/constant';
 
 export default ({ Vue }) => {
   Vue.prototype.$cordova = {
@@ -66,7 +66,7 @@ export default ({ Vue }) => {
                 message: {
                   title: opts.title || 'title',
                   description: opts.description || 'description',
-                  thumb: opts.thumb || `${constant.SERVER_STATIC_PREFIX}/share.png`,
+                  thumb: opts.thumb || `${ConstantUtil.SERVER_STATIC_PREFIX}/share.png`,
                   media: {
                     type: Wechat.Type.WEBPAGE,
                     webpageUrl: url,

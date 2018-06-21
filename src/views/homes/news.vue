@@ -18,17 +18,7 @@ import { mapMutations } from 'vuex';
 
 export default {
   created() {
-    this.$http.use({
-      url: this.$constant.api.NEWS_FIND_ALL,
-      success: (data) => {
-        this.$data.list = data;
-
-        this.setNews({
-          length: data.length,
-          increment: 0,
-        });
-      },
-    });
+    this.ajax();
   },
   data() {
     return {
@@ -39,6 +29,16 @@ export default {
     ...mapMutations('badge', [
       'setNews',
     ]),
+    ajax() {
+      this.$api.news.findAll((data) => {
+        this.list = data;
+
+        this.setNews({
+          length: data.length,
+          increment: 0,
+        });
+      });
+    },
     showDetail(item) {
       if (this.$q.platform.is.cordova) {
         this.$cordova.browser(item.url, {
@@ -54,4 +54,4 @@ export default {
 };
 </script>
 
-<style lang="stylus"></style>
+<style scoped lang="stylus"></style>

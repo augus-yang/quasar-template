@@ -74,27 +74,22 @@ export default {
     submit() {
       this.$v.form.$touch();
       if (!this.$v.form.$error) {
-        this.$http.use({
-          url: this.$constant.api.USER_LOGIN,
-          method: 'POST',
-          data: {
-            mobile: this.$data.form.mobile,
-            pwd: this.$data.form.pwd,
-          },
-          success: (data) => {
-            this.setToken(data.token);
-            this.setUser(data.user);
+        this.$api.login({
+          mobile: this.form.mobile,
+          pwd: this.form.pwd,
+        }, (data) => {
+          this.setToken(data.token);
+          this.setUser(data.user);
 
-            if (this.$q.platform.is.cordova) {
-              // 设置推送标签
-              window.JPush.setAlias({
-                sequence: data.user.id,
-                alias: data.user.mobile,
-              });
-            }
+          if (this.$q.platform.is.cordova) {
+            // 设置推送标签
+            window.JPush.setAlias({
+              sequence: data.user.id,
+              alias: data.user.mobile,
+            });
+          }
 
-            this.$router.replace('/home/dashboard');
-          },
+          this.$router.replace('/home/dashboard');
         });
       }
     },
@@ -102,4 +97,4 @@ export default {
 };
 </script>
 
-<style lang="stylus"></style>
+<style scoped lang="stylus"></style>

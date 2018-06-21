@@ -33,7 +33,7 @@ export default {
 };
 </script>
 
-<style lang="stylus">
+<style scoped lang="stylus">
   .main-view
     background url('../statics/bgs/login.jpg') no-repeat
     background-size cover

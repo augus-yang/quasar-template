@@ -35,20 +35,20 @@ import { mapMutations } from 'vuex';
 
 export default {
   created() {
-    this.$http.use({
-      url: this.$constant.api.NEWS_COUNT,
-      success: (data) => {
-        this.setNews({
-          length: data.newsCount,
-          increment: data.newsCount - this.$store.state.badge.news.length,
-        });
-      },
-    });
+    this.ajax();
   },
   methods: {
     ...mapMutations('badge', [
       'setNews',
     ]),
+    ajax() {
+      this.$api.news.count((data) => {
+        this.setNews({
+          length: data.newsCount,
+          increment: data.newsCount - this.$store.state.badge.news.length,
+        });
+      });
+    },
     refresher(done) {
       setTimeout(() => {
         done();
@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style lang="stylus">
+<style scoped lang="stylus">
   .custom-advice
     padding-top 30px
     position relative

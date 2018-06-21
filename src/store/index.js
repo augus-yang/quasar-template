@@ -6,7 +6,7 @@ import state from './state';
 import * as getters from './getters';
 import * as mutations from './mutations';
 import * as actions from './actions';
-import constant from '../constant';
+import ConstantUtil from '../utils/constant';
 import badge from './badge';
 import user from './user';
 
@@ -23,7 +23,7 @@ const store = new Vuex.Store({
   },
   plugins: [
     VuexPersistedstate({
-      key: constant.STORAGE_KEY,
+      key: ConstantUtil.STORAGE_KEY,
     }),
   ],
 });

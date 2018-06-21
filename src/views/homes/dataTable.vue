@@ -15,7 +15,7 @@
 <script>
 export default {
   created() {
-    this.getData();
+    this.ajax();
   },
   data() {
     return {
@@ -56,9 +56,9 @@ export default {
     };
   },
   methods: {
-    getData() {
+    ajax() {
       // 模拟数据
-      this.$data.data = [
+      this.data = [
         {
           id: 'f32162fec485464fb46be95ff6fdd52b',
           name: 'local',
@@ -87,4 +87,4 @@ export default {
 };
 </script>
 
-<style lang="stylus"></style>
+<style scoped lang="stylus"></style>
