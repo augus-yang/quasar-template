@@ -1,5 +1,9 @@
 // 后台请求前缀
-const SERVER_PREFIX = 'http://localhost:3020';
+let SERVER_PREFIX = 'http://localhost:8082';
+
+if (process.env.NODE_ENV === 'production') {
+  SERVER_PREFIX = 'http://localhost:8082';
+}
 
 export default {
   SERVER_PREFIX,
