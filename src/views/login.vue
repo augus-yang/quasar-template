@@ -74,7 +74,7 @@ export default {
     submit() {
       this.$v.form.$touch();
       if (!this.$v.form.$error) {
-        this.$api.login({
+        this.$api.user.login({
           mobile: this.form.mobile,
           pwd: this.form.pwd,
         }, (data) => {

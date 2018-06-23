@@ -99,7 +99,7 @@ export default {
     register() {
       this.$v.form.$touch();
       if (!this.$v.form.$error) {
-        this.$api.register({
+        this.$api.user.register({
           mobile: this.form.mobile,
           captcha: this.form.captcha,
           pwd: this.form.pwd,
@@ -123,7 +123,7 @@ export default {
       this.sendCaptchaButtonText = 60;
       this.sendCaptchaDisabled = true;
 
-      this.$api.captcha({
+      this.$api.user.captcha({
         mobile: this.form.mobile,
       }, () => {
         this.$q.notify({
