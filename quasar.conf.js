@@ -11,6 +11,7 @@ module.exports = function (ctx) {
       'socket',
       'validator',
       'vuelidate',
+      'wechat',
     ],
     css: [
       'app.styl',
