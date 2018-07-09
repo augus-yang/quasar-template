@@ -1,11 +1,14 @@
+let PREFIX = 'http://localhost:8081';
 // 后台请求前缀
 let SERVER_PREFIX = 'http://localhost:8082';
 
 if (process.env.NODE_ENV === 'production') {
+  PREFIX = 'http://localhost:8081';
   SERVER_PREFIX = 'http://localhost:8082';
 }
 
 export default {
+  PREFIX,
   SERVER_PREFIX,
   // 后台api请求前缀
   SERVER_API_PREFIX: `${SERVER_PREFIX}/api`,

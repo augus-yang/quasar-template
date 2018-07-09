@@ -24,6 +24,8 @@ export default [
       { path: 'blank', component: loadView('homes/blank'), meta: { keepAlive: true, title: '空白' } },
       // excel
       { path: 'excel', component: loadView('homes/excel'), meta: { title: 'Excel' } },
+      // qrCode
+      { path: 'qrCode', component: loadView('homes/qrCode'), meta: { title: '二维码' } },
     ],
   },
   // login

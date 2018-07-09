@@ -62,6 +62,10 @@
           <q-item-side icon="record_voice_over" />
           <q-item-main label="空白页" sublabel="blank" />
         </q-item>
+        <q-item exact to="/home/qrCode">
+          <q-item-side icon="movie" />
+          <q-item-main label="二维码" sublabel="qrCode" />
+        </q-item>
       </q-list>
     </q-layout-drawer>
 

@@ -8,6 +8,7 @@ module.exports = function (ctx) {
       'cordova',
       'excel',
       'i18n',
+      'qrCode',
       'socket',
       'validator',
       'vuelidate',
